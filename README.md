@@ -100,6 +100,17 @@ A sample AI-generated financial document is included so you can test it right aw
 - "What guidance was given for next fiscal year?"
 - "What acquisition did the company make?"
 
+## Windows setup walkthrough
+
+1. Install [Python 3.11+](https://www.python.org/downloads/) (check "Add python.exe to PATH" during install), [Node.js 18+](https://nodejs.org/), [Docker Desktop](https://www.docker.com/products/docker-desktop/), and [Ollama](https://ollama.com/download).
+2. Pull the model once: `ollama pull llama3`
+3. Clone the repo and start everything:
+git clone https://github.com/mythri-rdy/AI-Financial-Research-Assistant.git
+cd AI-Financial-Research-Assistant
+docker compose up --build
+4. In a separate terminal, make sure Ollama is running: `ollama serve` (if it says the port is already in use, it's already running — that's fine).
+5. Open `http://localhost:5173`, sign up, and upload a PDF (there's a sample in `samples/` if you don't have one handy).
+
 ## Roadmap
 
 - [ ] Multi-document comparison
