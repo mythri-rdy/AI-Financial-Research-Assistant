@@ -9,15 +9,11 @@ export default function Login() {
   const [error, setError] = useState('')
   const { login } = useAuth()
   const navigate = useNavigate()
-
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
 
     try {
-      // The backend's /auth/login endpoint expects form data
-      // (that's how FastAPI's OAuth2PasswordRequestForm works),
-      // not JSON, so we build a URLSearchParams body instead.
       const body = new URLSearchParams()
       body.append('username', email)
       body.append('password', password)
@@ -29,7 +25,6 @@ export default function Login() {
       setError('Invalid email or password')
     }
   }
-
   return (
     <div className="max-w-sm mx-auto mt-20 bg-white p-8 rounded-xl shadow-sm border border-slate-200">
       <h1 className="text-xl font-semibold mb-6">Log in</h1>

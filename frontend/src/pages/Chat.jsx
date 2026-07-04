@@ -5,18 +5,16 @@ import api from '../services/api'
 export default function Chat() {
   const { documentId } = useParams()
   const [question, setQuestion] = useState('')
-  const [messages, setMessages] = useState([]) // {role: 'user'|'ai', text, sources}
+  const [messages, setMessages] = useState([]) 
   const [loading, setLoading] = useState(false)
 
   const handleAsk = async (e) => {
     e.preventDefault()
     if (!question.trim()) return
-
     const currentQuestion = question
     setMessages((prev) => [...prev, { role: 'user', text: currentQuestion }])
     setQuestion('')
     setLoading(true)
-
     try {
       const response = await api.post('/chat/ask', {
         document_id: Number(documentId),
@@ -35,11 +33,9 @@ export default function Chat() {
       setLoading(false)
     }
   }
-
   return (
     <div className="max-w-2xl mx-auto mt-8 px-4 flex flex-col h-[80vh]">
       <h1 className="text-lg font-semibold mb-4">Ask this document</h1>
-
       <div className="flex-1 overflow-y-auto flex flex-col gap-3 mb-4">
         {messages.map((msg, i) => (
           <div
@@ -58,7 +54,6 @@ export default function Chat() {
         ))}
         {loading && <p className="text-sm text-slate-400">Thinking...</p>}
       </div>
-
       <form onSubmit={handleAsk} className="flex gap-2">
         <input
           value={question}

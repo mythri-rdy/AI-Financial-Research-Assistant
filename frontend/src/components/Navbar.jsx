@@ -4,12 +4,10 @@ import { useAuth } from '../context/AuthContext'
 export default function Navbar() {
   const { isAuthenticated, logout } = useAuth()
   const navigate = useNavigate()
-
   const handleLogout = () => {
     logout()
     navigate('/login')
   }
-
   return (
     <nav className="flex items-center justify-between px-6 py-4 bg-white border-b border-slate-200">
       <Link to="/" className="font-semibold text-lg text-slate-800">

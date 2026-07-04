@@ -7,11 +7,9 @@ export default function Register() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const navigate = useNavigate()
-
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
-
     try {
       await api.post('/auth/register', { email, password })
       navigate('/login')
@@ -19,7 +17,6 @@ export default function Register() {
       setError(err.response?.data?.detail || 'Something went wrong')
     }
   }
-
   return (
     <div className="max-w-sm mx-auto mt-20 bg-white p-8 rounded-xl shadow-sm border border-slate-200">
       <h1 className="text-xl font-semibold mb-6">Create your account</h1>
